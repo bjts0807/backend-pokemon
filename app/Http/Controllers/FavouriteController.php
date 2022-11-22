@@ -18,6 +18,9 @@ class FavouriteController extends Controller
 
     public function index()
     {
+        $id_user=Auth::user()->id;
+        $favourites=Favourite::where('id_usuario',$id_user)->get();
+        return response()->json($favourites);
     }
 
 
@@ -68,6 +71,13 @@ class FavouriteController extends Controller
      */
     public function show($id)
     {
+    }
+
+    public function search(Request $request){
+        $id_user=Auth::user()->id;
+        $favourite=Favourite::where('id_usuario',$id_user)->where('ref_api',$request->url)->get();
+        $count_favourite=$favourite->count();
+        return response()->json($count_favourite);
     }
 
     /**

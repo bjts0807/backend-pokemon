@@ -33,5 +33,6 @@ Route::prefix('favourite')->group(function () {
     Route::put('/update', [FavouriteController::class, 'update']);
     Route::delete('/destroy', [FavouriteController::class, 'destroy']);
     Route::get('/show/{id}', [FavouriteController::class, 'show']);
+    Route::get('/search', [FavouriteController::class, 'search']);
 });
 
